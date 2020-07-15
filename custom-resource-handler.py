@@ -16,9 +16,18 @@ def main(event, context):
 
         # Do the thing
         message = event['ResourceProperties']['Message']
-        attributes = {
-            'Response': 'You said "%s"' % message
-        }
+        if event['RequestType'] == 'Create':
+            attributes = {
+                'Response': 'Create Event: "%s"' % message
+            }
+        elif event['RequestType'] == 'Update':
+            attributes = {
+                'Response': 'Update Event: "%s"' % message
+            }
+        else:
+            attributes = {
+                'Response': 'You said "%s"' % message
+            }
 
         cfnresponse.send(event, context, cfnresponse.SUCCESS,
                          attributes, physical_id)

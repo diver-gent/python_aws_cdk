@@ -12,7 +12,7 @@ class MyStack(core.Stack):
 
         resource = MyCustomResource(
             self, "python_aws_cdk_resource",
-            message="python_aws_cdk_resource says hello",
+            Message="python_aws_cdk_resource says whaddup.",
         )
 
         # Publish the custom resource output
